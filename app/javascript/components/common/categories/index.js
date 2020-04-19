@@ -8,7 +8,7 @@ const DivVSpaced = styled.div`
  margin-top: 50px;
 `
 
-const Categories = () => {
+const Categories = (props) => {
 
   const [categories, setCategories] = useState([]);
 
