@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
+import Musics from '../musics';
 import { Heading, Columns, Image } from 'react-bulma-components';
 import styled from 'styled-components';
 import AlbumsService from '../../services/discovery';
@@ -35,6 +36,7 @@ const Albums = () => {
           </DivVSpaced>
         </Columns.Column>
       </Columns>
+      <Musics songs={album.songs || []}/>
     </Fragment>
   );
 }
