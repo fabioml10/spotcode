@@ -33,4 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
+  #para as paginas do react funcionarem, compatibiliza as rotas do rails com as do react
+  get "*path", to: "home#index", :constraints => lambda{|req| req.path !~ /\.(png|jpg|js|css|json)$/ }
+
 end
