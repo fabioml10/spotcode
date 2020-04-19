@@ -10,9 +10,9 @@ class Api::V1::DashboardController < ApplicationController
   #current_user é do devise, então faz a busca por esse usuario (logado)
   def load_recent_heard
     p ">>>>> Ver diferença do metodo MAP."
-    p @recent_albums = current_user.recently_heards.order("created_at DESC").limit(4)
+    p @recent_albums = current_user.recently_heards.order("created_at DESC").limit(8).uniq
     # & significa registro atual, então atual[:album]
-    p @recent_albums = current_user.recently_heards.order("created_at DESC").limit(4).map(&:album)
+    p @recent_albums = current_user.recently_heards.order("created_at DESC").limit(8).map(&:album).uniq
   end
 
   def load_recommendations
