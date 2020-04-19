@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
 
   #libera chamadas de fora do app quando for json (post no ajax?)
   protect_from_forgery unless: -> { request.format.json? }
+
+  #override
+  def after_sign_in_path_for(resource)
+    '/discovery'
+  end
+
 end
