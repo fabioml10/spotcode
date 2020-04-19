@@ -1,18 +1,32 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
-const SearchBar = () => {
+import { Form } from 'react-bulma-components';
+
+const SearchBar = (props) => {
+
+  const [query, setQuery] = useState("");
+
+  const Search = (e) => {
+    if (e.key === 'Enter') {
+      props.fetchSearch(query);
+    }
+  }
 
   return (
     <Fragment>
-      <Columns>
-        <Columns.Column desktop={{ size: 6, offset: 3 }} mobile={{ size: 12 }}>
-          <SearchBar fetchSearch={fetchSearch} />
-        </Columns.Column>
-      </Columns>
-
-      <Categories fetchCategorySearch={fetchCategorySearch} />
+      <Form.Field onKeyDown={Search}>
+        <Form.Control iconRight>
+          <Form.Input
+            placeholder="Text input"
+            placeholder='Álbums, artistas ou músicas'
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+          />
+        </Form.Control>
+      </Form.Field>
     </Fragment>
   );
+
 }
 
 export default SearchBar;
